@@ -1,0 +1,31 @@
+<template name="search">
+  <h3 class="header center black-text"> Search Results </h3>
+		<form class="row">
+			<div class="col s12 m9">
+				<input name="searchterm" type="text" placeholder='Search for ad' value={{searchterm}}>
+			</div>
+			<div class="col s12 m3">
+				<button class="btn btn-block waves-effect waves-light black" type='submit'> Go </button>
+			</div>
+		</form>
+	<ul class="collection">
+    {{#each adArray}}
+      <li class="collection-item avatar">
+        {{#ipfsInfo config=.}}
+        {{#if image0}}
+          <img src="https://ipfs.io/ipfs/{{image0}}" alt="" class="circle">
+        {{/if}}
+       {{/ipfsInfo}}
+          <div class="title">
+            <a href="/search/{{adregistryAddress}}/{{searchterm}}/{{adlistAddress}}/{{address}}" class="href">
+              {{title}}
+              <br>
+              <small>{{address}}</small>
+            </a>
+          </div>
+     </li>
+      {{else}}
+      <p class='flow-text center-align'>No results found </p>
+     {{/each}}
+    </ul> 
+</template>

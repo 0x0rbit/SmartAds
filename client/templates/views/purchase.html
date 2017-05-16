@@ -1,0 +1,22 @@
+<template name="purchase">
+ 	<br>
+	<div class="left btn grey back">Back</div>
+	<br><br>
+	 <div class="row"> 
+     <div class="left col m5 s12 center-align">
+      {{> buyButton contract=contract}}
+
+      <img src="http://escrowmybits.com/images/bannerlesslogo.png" alt="" class="responsive-img">
+      </div>
+	<div class="right col m7 s12">
+	<h1>Your Purchase Escrow</h1>
+		<h5 class='truncate'><b>Escrow Contract:</b> {{address}}</h5>
+		<h5 class='truncate'><b>Created On:</b>{{createTime}}</h5>
+		<h5 class='truncate'><b>Seller:</b> {{seller}}</h5>
+		<h5 class='truncate'><b>Buyer:</b> {{buyer}}</h5>
+		<h5 class='truncate'><b>Item/Service:</b><a href="/adlist/{{adregistryAddress}}/{{adlistAddress}}/{{adAddress}}" class="href"> {{adAddress}}</a></h5>
+		<h5 class='truncate'><b>Value:</b> {{value}} ETH</h5>
+		<h5 class='truncate'><b>Unlocks in:</b> {{expireTime}} Seconds</h5>
+	</div>
+	</div>
+</template>

@@ -1,0 +1,20 @@
+<template name="buyButton">
+  <div class="btn btn-block {{getState 'class'}}">
+    {{#if TemplateVar.get "processing"}}
+        Processing...
+    {{else}}
+        {{getState 'buttonText'}}
+    {{/if}}
+  </div>
+  {{#if getState 'subText'}}
+        {{getState 'subText'}}
+  {{/if}}
+</template>
+
+<template name="enterPinForm">
+  <form>
+  <div class="row">
+    <input name="pin" type="number" placeholder="Secret Pin" value="{{pin}}" required>
+  </div>
+  </form>
+</template>

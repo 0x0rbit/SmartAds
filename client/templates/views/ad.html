@@ -1,0 +1,140 @@
+<template name="ad">
+	<br>
+	<div class="left btn grey back">Back</div>
+	<br>
+	<br>
+	{{#ipfsInfo config=ipfsInfoConfig}}
+		<div class="row">	
+		<div class="col m5 s12 center-align">
+			{{#if TemplateVar.get "deploying"}}
+  			<div class="row">
+  				<p class='teal-text'>Deploying New Escrow Contract...</p>
+  				<div class="progress">
+  				<div class="indeterminate"></div>
+  				</div>
+  			</div>
+  			{{else}}
+  			{{#if owner}}	
+			<div class="btn btn-block green buy">Buy</div>
+			{{/if}}
+			{{/if}}
+		</div>
+		</div>
+		<div class=row>
+			{{#if image0}}
+			<a href="http://localhost:8080/ipfs/{{image0}}"><img src="http://localhost:8080/ipfs/{{image0}}" alt="" class="responsive-img"></a>
+			{{/if}}
+			{{#if image1}}
+			<a href="http://localhost:8080/ipfs/{{image1}}"><img src="http://localhost:8080/ipfs/{{image1}}" alt="" class="responsive-img"></a>
+			{{/if}}
+			{{#if image2}}
+			<a href="http://localhost:8080/ipfs/{{image2}}"><img src="http://localhost:8080/ipfs/{{image2}}" alt="" class="responsive-img"></a>
+			{{/if}}
+			{{#if image3}}
+			<a href="http://localhost:8080/ipfs/{{image3}}"><img src="http://localhost:8080/ipfs/{{image3}}" alt="" class="responsive-img"></a>
+			{{/if}}
+		<div class="col m7 s12">
+			{{#if icon}}
+				<i class="right large material-icons">{{icon}}</i>
+			{{/if}}
+			<h1>{{title}}</h1>			
+			<h4><b>Price:</b>{{price}} ETH</h4>
+			<h5><b>SLA:</b>{{sla}} Hours</h5>
+			<h5><b>Posted On:</b>{{postDate}}</h5>
+			<h5 class='truncate'><b>Ad:</b> {{address}}</h5>
+			{{#if email}}
+			<h5><i class="material-icons prefix">email</i> {{email}}</h5>
+			{{/if}}
+			{{#if phone}}
+			<h5><i class="material-icons prefix">phone</i> {{phone}}</h5>
+			{{/if}}
+			<h5>{{description}}</h5>
+		</div>
+	</div>
+	{{/ipfsInfo}}
+</template>
+
+<template name="adInfoForm">
+	<form>
+	<div class="row">
+		<div class="col input-field s12"> 
+		<i class="material-icons prefix">view_headline</i>
+			<input name="title" type="text" placeholder="Product Name" value="{{title}}" required>
+			<label for="name" class='active'> Ad Title</label>
+		</div>
+	</div>
+	<div class="row">
+				<div class="col input-field s12">
+					<i class="material-icons prefix">shop</i>
+					<input name="price" type="number" value="{{price}}" placeholder="Product Cost in ETH" required>
+					<label for="name" class='active'> Price </label>
+				</div>
+	</div>
+	<div class="row">
+				<div class="col input-field s12">
+					<i class="material-icons prefix">schedule</i>
+					<input name="sla" class="range-field" type="range" min="1" max="168" placeholder="Set Service Level Agreement" required>
+					<label for="name" class='active'> SLA </label>
+					{{#if TemplateVar.get 'sla'}}
+            			{{TemplateVar.get 'sla'}} Hours
+          			{{/if}}
+				</div>
+	</div>
+	<div class="row">
+		<div class="col input-field s12"> 
+		<i class="material-icons prefix">phone</i>
+			<input name="phone" type="tel" placeholder="Phone Number" value="{{phone}}" class="validate">
+			<label for="name" class='active'> Telephone</label> 
+		</div>
+		<div class="col input-field s12">
+		<i class="material-icons prefix">email</i>
+			<input name="email" type="email" placeholder="Email Address" value="{{email}}" class="validate">
+			<label for="name" class='active'> Email Address</label>
+		</div>
+	</div>
+		<div class="row">
+			<div class="col input-field s12">
+				<input name="image0" type="hidden" value="{{TemplateVar.get 'image0'}}">
+				<input name="image1" type="hidden" value="{{TemplateVar.get 'image1'}}">
+				<input name="image2" type="hidden" value="{{TemplateVar.get 'image2'}}">
+				<input name="image3" type="hidden" value="{{TemplateVar.get 'image3'}}">
+
+	<div class="col file-field input-field s12">
+      <div class="btn">
+        <span>Image</span>
+        <input type="file" multiple>
+      </div>
+      <div class="file-path-wrapper">
+        <input class="file-path validate active" type="text" value="{{TemplateVar.get 'file-path'}}">
+      	<label for="file-path" class='active'>Select Images</label>	
+      </div>
+    </div>
+	</div>
+	</div>
+		<div class="row">
+			<div class="col input-field s12">
+				 <i class="material-icons prefix">description</i>
+				<textarea name="description" class="materialize-textarea" placeholder="Description"> {{description}}</textarea>
+				<label for="description" class='active'>Description</label>
+			</div>
+		</div>
+	</form>
+</template>
+
+<template name="setPinForm">
+	<form>
+	<div class="row">
+		<input name="pin" type="number" placeholder="Secret Pin" value="{{pin}}" required>
+	</div>
+	<div class="row">
+				<div class="col input-field s12">
+					<i class="material-icons prefix">schedule</i>
+					<input name="locktime" class="range-field" type="range" min="{{TemplateVar.get 'sla'}}" max="168" placeholder="Set Lock Time">
+					<label for="name" class='active'> Lock Time </label>
+					{{#if TemplateVar.get 'locktime'}}
+            			{{TemplateVar.get 'locktime'}} Seconds
+          			{{/if}}
+	</div>
+	</div>
+	</form>	
+</template>

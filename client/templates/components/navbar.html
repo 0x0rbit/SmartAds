@@ -1,0 +1,33 @@
+<template name="navbar">
+  <ul id='dropdown1' class='dropdown-content'>
+    {{#each accArray}}
+      <li>
+        <a class='select-account' href="#!">
+          <span class='valign-wrapper'>
+            {{shortAddress address}}
+          </span>
+        </a>
+      </li>
+    {{/each}}
+     <li class="divider"></li>
+      <li>
+        <a class='detail-account' href="#!">
+          <span class='valign-wrapper'>
+            My Account 
+          </span>
+        </a>
+      </li>
+  </ul>
+  <nav class="black lighten-1" role="navigation">
+    <div class="nav-wrapper">
+      <a href="/" class="brand-logo center">Smart Ads</a>
+      <ul class="right">
+        <li>
+          <a class='dropdown-button valign-wrapper' data-beloworigin="true" href='#' data-activates='dropdown1'>
+            {{shortAddress defaultAddress}} - {{TemplateVar.get "balance"}} ETH
+          <i class="material-icons right">arrow_drop_down</i></a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+</template>

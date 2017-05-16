@@ -1,0 +1,16 @@
+{
+  "name": "smart-Ads",
+  "private": true,
+  "scripts": {
+    "start": "meteor run"
+  },
+  "dependencies": {
+    "babel-runtime": "^6.20.0",
+    "ipfs-js": "0.0.11",
+    "jquery": "^1.9.1",
+    "meteor-node-stubs": "^0.2.6",
+    "simpl-schema": "^0.2.3",
+    "solc": "^0.4.10",
+    "web3": "^0.18.4"
+  }
+}

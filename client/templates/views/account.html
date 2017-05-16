@@ -1,0 +1,92 @@
+<template name="account">
+<div class="row">
+<ul id='dropdown2' class='dropdown-content'>
+    {{#each accArray}}
+      <li>
+        <a class='select-account' href="#!">
+          <span class='valign-wrapper'>
+            {{address}}
+          </span>
+        </a>
+      </li>
+    {{/each}}
+    </ul>
+      <ul class="center">
+        <li>
+          <a class='dropdown-button valign-wrapper' data-beloworigin="true" href='#' data-activates='dropdown2'>
+           <h5>Account: {{account}}</h5>
+          <i class="material-icons right">arrow_drop_down</i></a>
+        </li>
+      </ul>
+</div>
+<div class=row>
+<h3 class="header center black-text"> Your posted Ads </h3>
+	<ul class="collection">
+    {{#each adArray}}
+      <li class="collection-item avatar">
+      {{#ipfsInfo config=.}}
+        {{#if image0}}
+          <img src="https://ipfs.io/ipfs/{{image0}}" alt="" class="circle">
+        {{/if}}
+       {{/ipfsInfo}} 
+          <div class="title">
+            <a href="/adlist/{{adregistryAddress}}/{{adlistAddress}}/{{address}}" class="href">
+              {{title}}
+              <br>
+              <small>{{address}}</small>
+            </a>
+            <br>
+             <b>Created On:</b>{{createTime}}
+            <br> 
+             <b>Total Orders:</b>{{orders}}
+          </div>
+     </li>
+      {{else}}
+      <p class='flow-text center-align'>No results found </p>
+     {{/each}}
+    </ul> 
+    </div>
+  <div class="row">
+<h3 class="header center black-text"> Your Seller Escrows </h3>
+  <ul class="collection">
+    {{#each sellArray}}
+      <li class="collection-item avatar">
+          <div class="title">
+            <a href="/adlist/{{adregistryAddress}}/{{adlistAddress}}/{{adAddress}}/{{escrowAddress}}" class="href">
+            <div class="btn {{color}}">
+             {{state}}
+           </div>
+              {{escrowAddress}}
+            </a>
+            <br>
+            <b>Created On:</b>{{createTime}}
+            </div>
+     </li>
+      {{else}}
+      <p class='flow-text center-align'>No results found </p>
+     {{/each}}
+    </ul> 
+    </div>
+  <div class="row">
+<h3 class="header center black-text"> Your Buyer Escrows </h3>
+  <ul class="collection">
+    {{#each buyArray}}
+      <li class="collection-item avatar">
+          <div class="title">
+            <a href="/adlist/{{adregistryAddress}}/{{adlistAddress}}/{{adAddress}}/{{escrowAddress}}" class="href">
+              <div class="btn {{color}}">
+             {{state}}
+              </div>
+              {{escrowAddress}}
+            </a>
+            <br>
+            <b>Created On:</b>{{createTime}}
+          </div>
+     </li>
+      {{else}}
+      <p class='flow-text center-align'>No results found </p>
+     {{/each}}
+    </ul> 
+    </div>
+
+</template>
